@@ -5,7 +5,7 @@ export const fetchApi = createAsyncThunk('posts/fetchApi', async () => {
     try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
         return response.status === 200
-            ? response.data
+            ? response.data || []
             : Promise.reject(new Error(`Request failed with status ${response.status}`));
     } catch (error) {
         throw new Error(error);
