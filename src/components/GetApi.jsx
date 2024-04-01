@@ -4,16 +4,16 @@ import { compose } from '@reduxjs/toolkit';
 import { useEffect } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { fetchApi } from '~/redux/action/apiAction';
+import { fetchApi } from '~/redux/apiAction';
 
 const GetApi = (state) => {
-    const { data,  } = useSelector((state) => state.api);
+    const { data } = useSelector((state) => state.api);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchApi());
     }, [dispatch]);
-   
+
     console.log('🚀 ~ getApi ~ data:', state);
 
     return (

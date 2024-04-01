@@ -1,13 +1,10 @@
-
-
 import { useDispatch, useSelector } from "react-redux";
-
-
-
 
 const Counter = () => {
      const count = useSelector(state => state.counter.count)
      const dispatch = useDispatch()
+
+
      const handleIncrement = () => {
           dispatch({
                type: 'INCREMENT_ASYNC',
@@ -23,18 +20,19 @@ const Counter = () => {
      }
 
      return (
-          <>
-               <div>
+          <div className=" p-4 text-center ">
+               <div className=" text-xl mb-3  ">
                     Clicked: {count} times
                </div>
-               <button className="bg-blue-400 " onClick={handleIncrement}>
+               <button className="bg-blue-400 p-2 rounded-md " onClick={handleIncrement}>
                     Increment
                </button>
-               &nbsp;
-               <button className="bg-blue-500" onClick={handleDecrement}>
+               &nbsp;&nbsp;
+               <button className="bg-blue-500 p-2 rounded-md" onClick={handleDecrement}>
                     Decrement
                </button>
-               <hr /></>
+
+          </div >
      )
 
 }

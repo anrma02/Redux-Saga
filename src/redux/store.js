@@ -1,8 +1,9 @@
 import createSagaMiddleware from 'redux-saga';
 import { configureStore } from '@reduxjs/toolkit';
 
-import counterReducer from '~/redux/action/Counter';
-import apiReducer from '~/redux/action/apiAction';
+import counterReducer from '~/redux/counterRedux';
+import apiReducer from '~/redux/apiAction';
+import todoReducer from '~/redux/todoRedux';
 import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -13,6 +14,7 @@ const middleware = (getDefaultMiddleware) => {
 const store = configureStore({
     reducer: {
         api: apiReducer,
+        todo: todoReducer,
         counter: counterReducer,
     },
     middleware: middleware,
