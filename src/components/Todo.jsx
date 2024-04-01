@@ -2,7 +2,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, deleteTodo, fetchTodosRequest } from '~/redux/todoRedux';
-import { handleAddTodo, handleDeleteTodo } from '~/utils/todoHandle';
+import { handleAddTodo, handleDeleteTodo, } from '~/utils/todoHandle';
+import TodoItem from './TodoItem';
 
 
 function AddTodo() {
@@ -10,18 +11,22 @@ function AddTodo() {
      const dispatch = useDispatch();
      const { todos } = useSelector(state => state.todo);
 
+     // fetchTodosRequest function lấy danh sách todo
      useEffect(() => {
           dispatch(fetchTodosRequest())
      }, [dispatch])
 
+     // handleAddTodo function thêm todo
      const handleSubmit = e => {
           e.preventDefault();
           handleAddTodo(dispatch, addTodo, setText, text)
      };
 
+     // handleDelete function xóa todo
      const handleDelete = id => {
           handleDeleteTodo(dispatch, id, deleteTodo)
      }
+
 
      return (
           <div>
@@ -35,15 +40,6 @@ function AddTodo() {
                     />
                     <button type="submit" className=' bg-lime-500 p-4 rounded-lg ml-3'>Add</button>
                </form>
-               <div className='text-center'>
-                    {
-                         text && (
-                              <p>
-                                   <strong>Adding todo:</strong> {text}
-                              </p>
-                         )
-                    }
-               </div>
 
                <div className='flex justify-center mt-7'>
                     <div className="relative overflow-x-auto">
@@ -63,19 +59,7 @@ function AddTodo() {
                               </thead>
                               <tbody>
                                    {todos.map((item, index) => (
-                                        <tr key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-slate-200 transition duration-100">
-                                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-[16px]">
-                                                  {index + 1}
-                                             </th>
-                                             <td className="px-6 py-2 text-xl">
-                                                  <span style={{ textDecoration: item.completed ? 'line-through' : 'none' }}>
-                                                       {item.text}
-                                                  </span>
-                                             </td>
-                                             <td className="flex justify-center gap-4 py-6 text-[16px]">
-                                                  <button className='hover:text-red-400' onClick={() => handleDelete(item.id)}>Delete</button>
-                                             </td>
-                                        </tr>
+                                        <TodoItem key={item.id} item={item} index={index} handleDeleteTodo={handleDelete} />
                                    ))}
                               </tbody>
                          </table>
