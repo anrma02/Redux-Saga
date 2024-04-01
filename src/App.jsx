@@ -18,7 +18,7 @@ function App() {
                 <Todo />
 
                 <hr />
-                {/* <GetApi /> */}
+                <GetApi />
             </Provider>
         </>
     );

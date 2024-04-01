@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, deleteTodo, fetchTodosRequest } from '~/redux/todoRedux';
+import { handleAddTodo, handleDeleteTodo } from '~/utils/todoHandle';
 
 
 function AddTodo() {
@@ -15,14 +16,13 @@ function AddTodo() {
 
      const handleSubmit = e => {
           e.preventDefault();
-          if (!text.trim()) return;
-          dispatch(addTodo({
-               id: Math.floor(Math.random() * 1000),
-               text: text,
-               completed: false
-          }));
-          setText('');
+          handleAddTodo(dispatch, addTodo, setText, text)
      };
+
+     const handleDelete = id => {
+          handleDeleteTodo(dispatch, id, deleteTodo)
+     }
+
      return (
           <div>
                <form onSubmit={handleSubmit} className='flex justify-center'>
@@ -35,13 +35,15 @@ function AddTodo() {
                     />
                     <button type="submit" className=' bg-lime-500 p-4 rounded-lg ml-3'>Add</button>
                </form>
-               {
-                    text && (
-                         <p>
-                              <strong>Adding todo:</strong> {text}
-                         </p>
-                    )
-               }
+               <div className='text-center'>
+                    {
+                         text && (
+                              <p>
+                                   <strong>Adding todo:</strong> {text}
+                              </p>
+                         )
+                    }
+               </div>
 
                <div className='flex justify-center mt-7'>
                     <div className="relative overflow-x-auto">
@@ -71,8 +73,7 @@ function AddTodo() {
                                                   </span>
                                              </td>
                                              <td className="flex justify-center gap-4 py-6 text-[16px]">
-                                                  <button onClick={() => dispatch(deleteTodo(item.id))}>Delete</button>
-
+                                                  <button className='hover:text-red-400' onClick={() => handleDelete(item.id)}>Delete</button>
                                              </td>
                                         </tr>
                                    ))}
