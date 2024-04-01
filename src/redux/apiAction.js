@@ -4,7 +4,9 @@ import axios from 'axios';
 export const fetchApi = createAsyncThunk('posts/fetchApi', async () => {
     try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-        return response.status === 200 ? response.data : Promise.reject(new Error('Failed to fetch data'));
+        return response.status === 200
+            ? response.data
+            : Promise.reject(new Error(`Request failed with status ${response.status}`));
     } catch (error) {
         throw new Error(error);
     }
@@ -15,17 +17,15 @@ const apiAction = createSlice({
     initialState: {
         loading: false,
         error: false,
+        status: null,
         data: [],
     },
     reducers: {
         fetchRequest: (state) => {
             state.loading = true;
-            state.error = null;
-            state.data = [];
         },
         fetchSuccess: (state, action) => {
             state.loading = false;
-            state.error = null;
             state.data = action.payload;
         },
         fetchFailure: (state, action) => {
