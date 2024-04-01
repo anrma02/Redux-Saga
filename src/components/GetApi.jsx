@@ -13,7 +13,6 @@ const GetApi = () => {
         dispatch(fetchApi());
     }, [dispatch]);
 
-
     return (
         <div>
             List:

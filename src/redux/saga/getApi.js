@@ -13,7 +13,6 @@ function* getApiAsync() {
         yield put(fetchTodosFailure(error.message));
     }
 }
-
 export function* apiSaga() {
     yield takeEvery('FETCH_API', getApiAsync);
 }

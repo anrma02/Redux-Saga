@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, deleteTodo, fetchTodosRequest } from '~/redux/todoRedux';
-import { handleAddTodo, handleDeleteTodo, } from '~/utils/todoHandle';
+import { handleAddTodo, handleDeleteTodo, } from '~/service/todoHandle';
 import TodoItem from './TodoItem';
 
 
@@ -19,7 +19,8 @@ function AddTodo() {
      // handleAddTodo function thêm todo
      const handleSubmit = e => {
           e.preventDefault();
-          handleAddTodo(dispatch, addTodo, setText, text)
+          handleAddTodo(dispatch, addTodo, text)
+          setText('')
      };
 
      // handleDelete function xóa todo

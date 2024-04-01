@@ -7,7 +7,7 @@
  * @param {string} text - Nội dung của công việc mới.
  */
 
-export const handleAddTodo = (dispatch, addTodo, setText, text) => {
+export const handleAddTodo = (dispatch, addTodo, text) => {
     if (!text.trim()) return;
     dispatch(
         addTodo({
@@ -16,7 +16,6 @@ export const handleAddTodo = (dispatch, addTodo, setText, text) => {
             completed: false,
         }),
     );
-    setText('');
 };
 
 /**
