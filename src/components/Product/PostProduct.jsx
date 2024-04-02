@@ -23,6 +23,7 @@ function AddTodo() {
                ...product,
                [name]: value,
           });
+          
           const errorMessages = valiDateField(name, value)
           setErrors({
                ...errors,
@@ -33,13 +34,12 @@ function AddTodo() {
      // handleAddTodo function thêm todo
      const handleSubmit = e => {
           e.preventDefault();
-          const { valid, errors } = valiDateForm(product);
-          if (valid) {
+          const errors = valiDateForm(product);
+          if (Object.keys(errors).length === 0) {
                dispatch(addProductSuccess(product));
           } else {
                setErrors(errors);
           }
-
      };
 
      // handleAddTodo function kiểm tra lỗi
@@ -74,7 +74,7 @@ function AddTodo() {
                                    type="text"
                                    value={product.title}
                                    name="title"
-                                   className={`  w-2/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block   p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  ${errors.title ? "error" : ""}`}
+                                   className={` w-2/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block   p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  `}
                                    onChange={handleChange}
                                    onBlur={handleBlur}
                                    placeholder="Title"
@@ -84,7 +84,7 @@ function AddTodo() {
                                    type="text"
                                    value={product.price}
                                    name="price"
-                                   className={`w-2/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block   p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  ${errors.price ? "error" : ""}`}
+                                   className={`w-2/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block   p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  `}
                                    onChange={handleChange}
                                    onBlur={handleBlur}
                                    placeholder="Price"
@@ -94,7 +94,7 @@ function AddTodo() {
                                    type="text"
                                    value={product.description}
                                    name="description"
-                                   className={`w-2/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block   p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  ${errors.description ? "error" : ""}`}
+                                   className={`w-2/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block   p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500   `}
                                    onChange={handleChange}
                                    onBlur={handleBlur}
                                    placeholder="Description"
@@ -104,7 +104,7 @@ function AddTodo() {
                                    type="text"
                                    value={product.category}
                                    name="category"
-                                   className={`w-2/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block   p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  ${errors.category ? "error" : ""}`}
+                                   className={`w-2/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block   p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500   `}
                                    onChange={handleChange}
                                    onBlur={handleBlur}
                                    placeholder="Category"

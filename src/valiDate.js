@@ -10,7 +10,7 @@ const valiDateField = (field, value) => {
         case 'title':
             return value.trim() ? '' : 'Vui lòng nhập tiêu đề';
         case 'price':
-            return value.trim() ? (/^\d+$/.test(value) ? '' : 'Vui long nhập giá trị số') : 'Vui lòng nhập SĐT';
+            return value.trim() ? (/^\d+$/.test(value) ? '' : 'Vui long nhập giá trị số') : 'Vui lòng nhập giá tiền';
         case 'description':
             return value.trim() ? '' : 'Vui lòng nhập mô tả';
 
