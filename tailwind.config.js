@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 export default {
     mode: 'jit',
@@ -5,5 +6,5 @@ export default {
     theme: {
         extend: {},
     },
-    plugins: [],
+    plugins: [require('daisyui')],
 };

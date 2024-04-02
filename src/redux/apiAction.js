@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const fetchApi = createAsyncThunk('posts/fetchApi', async () => {
     try {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+        const response = await axios.get('https://fakestoreapi.com/products');
         return response.status === 200
             ? response.data || []
             : Promise.reject(new Error(`Request failed with status ${response.status}`));
@@ -20,18 +20,21 @@ const apiAction = createSlice({
         status: null,
         data: [],
     },
-    reducers: {
-        fetchRequest: (state) => {
-            state.loading = true;
-        },
-        fetchSuccess: (state, action) => {
-            state.loading = false;
-            state.data = action.payload;
-        },
-        fetchFailure: (state, action) => {
-            state.loading = false;
-            state.error = action.payload;
-        },
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchApi.pending, (state) => {
+                state.loading = true;
+                state.error = false;
+            })
+            .addCase(fetchApi.fulfilled, (state, action) => {
+                state.loading = false;
+                state.data = action.payload;
+            })
+            .addCase(fetchApi.rejected, (state) => {
+                state.loading = false;
+                state.error = true;
+            });
     },
 });
 

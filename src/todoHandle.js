@@ -13,7 +13,6 @@ export const handleAddTodo = (dispatch, addTodo, text) => {
         addTodo({
             id: Math.floor(Math.random() * 1000),
             text: text,
-            completed: false,
         }),
     );
 };
@@ -27,4 +26,15 @@ export const handleAddTodo = (dispatch, addTodo, text) => {
 export const handleDeleteTodo = (dispatch, id, deleteTodo) => {
     // Dispatch một action để xóa công việc với ID được cung cấp.
     dispatch(deleteTodo(id));
+};
+
+/**
+ * Xử lý sự kiện khi người dùng chỉnh sửa một công việc.
+ * @param {function} dispatch - Hàm dispatch của Redux để gửi action đến store.
+ * @param {string} id - ID của công việc cần chỉnh sửa.
+ * @param {string} newText - Nội dung mới của công việc.
+ */
+
+export const handleEditTodo = (dispatch, id, newText, editTodoAction) => {
+    dispatch(editTodoAction({ id, newText }));
 };

@@ -16,7 +16,6 @@ function App() {
                 <Counter />
                 <hr />
                 <Todo />
-
                 <hr />
                 <GetApi />
             </Provider>

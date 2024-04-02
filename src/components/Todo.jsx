@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, deleteTodo, fetchTodosRequest } from '~/redux/todoRedux';
-import { handleAddTodo, handleDeleteTodo, } from '~/todoHandle';
+import { handleAddTodo, handleDeleteTodo, handleEditTodo, } from '~/todoHandle';
 import TodoItem from './TodoItem';
 
 
@@ -10,6 +10,7 @@ function AddTodo() {
      const [text, setText] = useState('');
      const dispatch = useDispatch();
      const { todos } = useSelector(state => state.todo);
+     const [editTodo, setEditTodo] = useState(''); // [1
 
      // fetchTodosRequest function lấy danh sách todo
      useEffect(() => {
@@ -29,6 +30,9 @@ function AddTodo() {
           handleDeleteTodo(dispatch, id, deleteTodo)
      }
 
+     const handleEdit = (id, newText) => {
+          handleEditTodo(dispatch, id, newText, editTodo)
+     }
 
      return (
           <div>
@@ -61,7 +65,7 @@ function AddTodo() {
                               </thead>
                               <tbody  >
                                    {todos.map((item, index) => (
-                                        <TodoItem key={item.id} item={item} index={index} handleDeleteTodo={handleDelete} />
+                                        <TodoItem key={item.id} item={item} index={index} handleDeleteTodo={handleDelete} handleEditTodo={handleEdit} />
                                    ))}
                               </tbody>
                          </table>

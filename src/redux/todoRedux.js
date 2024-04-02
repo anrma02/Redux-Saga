@@ -28,11 +28,12 @@ const todoSlice = createSlice({
         deleteTodo(state, action) {
             state.todos = state.todos.filter((todo) => todo.id !== action.payload);
         },
+
         editTodo(state, action) {
-            const { id, text } = action.payload;
-            const existingTodo = state.todos.find((todo) => todo.id === id);
-            if (existingTodo) {
-                existingTodo.text = text;
+            const { id, newText } = action.payload;
+            const todoToEdit = state.todos.find((todo) => todo.id === id);
+            if (todoToEdit) {
+                todoToEdit.text = newText;
             }
         },
     },
