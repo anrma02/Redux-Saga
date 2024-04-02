@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, deleteTodo, fetchTodosRequest } from '~/redux/todoRedux';
-import { handleAddTodo, handleDeleteTodo, } from '~/service/todoHandle';
+import { handleAddTodo, handleDeleteTodo, } from '~/todoHandle';
 import TodoItem from './TodoItem';
 
 
@@ -21,6 +21,7 @@ function AddTodo() {
           e.preventDefault();
           handleAddTodo(dispatch, addTodo, text)
           setText('')
+
      };
 
      // handleDelete function xóa todo
@@ -42,10 +43,10 @@ function AddTodo() {
                     <button type="submit" className=' bg-lime-500 p-4 rounded-lg ml-3'>Add</button>
                </form>
 
-               <div className='flex justify-center mt-7'>
-                    <div className="relative overflow-x-auto">
-                         <table className="w-[510px] text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                              <thead className="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
+               <div className='flex justify-center mt-7 max-h-[200px]  overflow-y-scroll overflow-x-hidden'>
+                    <div className="relative overflow-x-hidden">
+                         <table className="w-[510px] text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
+                              <thead className="sticky top-0 text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
                                    <tr>
                                         <th scope="col" className="px-6 py-3">
                                              STT
@@ -58,7 +59,7 @@ function AddTodo() {
                                         </th>
                                    </tr>
                               </thead>
-                              <tbody>
+                              <tbody  >
                                    {todos.map((item, index) => (
                                         <TodoItem key={item.id} item={item} index={index} handleDeleteTodo={handleDelete} />
                                    ))}
@@ -67,8 +68,6 @@ function AddTodo() {
                     </div>
                </div>
                <div>
-
-
                </div>
           </div>
      );
