@@ -5,7 +5,7 @@ import { Provider, } from 'react-redux'
 import store from './redux/store';
 import Counter from './components/Counter';
 import Product from './components/Product/Product';
-import Todo from './components/todo/Todo';
+import Todo from './components/Product/PostProduct';
 
 function App() {
 

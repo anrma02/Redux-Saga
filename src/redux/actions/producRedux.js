@@ -19,6 +19,7 @@ const apiAction = createSlice({
         error: false,
         status: null,
         data: [],
+        products: [],
     },
     reducers: {
         addProductRequest: (state) => {
