@@ -1,7 +1,7 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
 
 import { fetchTodosApi } from '~/service/fetchTodosApi';
-import { fetchTodosFailure, fetchTodosSuccess } from '../todoRedux';
+import { fetchTodosFailure, fetchTodosSuccess } from '../actions/todoRedux';
 
 // saga sẽ chờ action 'FETCH_API' được gửi đến
 function* fetchTodosSaga() {

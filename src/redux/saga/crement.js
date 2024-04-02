@@ -1,5 +1,5 @@
 import { delay, put, takeEvery } from 'redux-saga/effects';
-import { increment, decrement } from '~/redux/counterRedux';
+import { increment, decrement } from '~/redux/actions/counterRedux';
 
 // Saga sẽ chờ action 'INCREMENT_ASYNC' được gửi đến
 function* incrementAsync(action) {
@@ -13,7 +13,6 @@ function* decrementAsync(action) {
     yield put(decrement(action.payload));
 }
 
- 
 export function* incrementSaga() {
     yield takeEvery('INCREMENT_ASYNC', incrementAsync);
 }

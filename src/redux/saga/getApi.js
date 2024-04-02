@@ -1,15 +1,13 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { fetchTodosFailure } from '../todoRedux';
-import { fetchApi, fetchRequest, fetchSuccess } from '../apiAction';
+import { fetchApi } from '../actions/producRedux';
 
 // saga sẽ chờ action 'FETCH_API' được gửi đến
 function* getApiAsync() {
     try {
-        yield put(fetchRequest());
         const data = yield call(fetchApi);
-        yield put(fetchSuccess(data));
+        yield put(fetchApi.fulfilled(data));
     } catch (error) {
-        yield put(fetchTodosFailure(error.message));
+        yield put(fetchApi.rejected(error.message));
     }
 }
 export function* apiSaga() {

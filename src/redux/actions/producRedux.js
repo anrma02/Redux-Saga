@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchApi = createAsyncThunk('posts/fetchApi', async () => {
+export const fetchApi = createAsyncThunk('get/fetchApi', async () => {
     try {
         const response = await axios.get('https://fakestoreapi.com/products');
         return response.status === 200
@@ -20,7 +20,19 @@ const apiAction = createSlice({
         status: null,
         data: [],
     },
-    reducers: {},
+    reducers: {
+        addProductRequest: (state) => {
+            state.loading = true;
+        },
+        addProductSuccess: (state, action) => {
+            state.loading = false;
+            state.products.push(action.payload);
+        },
+        addProductFailure: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchApi.pending, (state) => {
@@ -38,6 +50,6 @@ const apiAction = createSlice({
     },
 });
 
-export const { fetchRequest, fetchSuccess, fetchFailure } = apiAction.actions;
+export const { addProductFailure, addProductSuccess, addProductRequest } = apiAction.actions;
 
 export default apiAction.reducer;

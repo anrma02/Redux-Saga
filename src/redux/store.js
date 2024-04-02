@@ -1,9 +1,9 @@
 import createSagaMiddleware from 'redux-saga';
 import { configureStore } from '@reduxjs/toolkit';
 
-import counterReducer from '~/redux/counterRedux';
-import apiReducer from '~/redux/apiAction';
-import todoReducer from '~/redux/todoRedux';
+import counterReducer from '~/redux/actions/counterRedux';
+import apiReducer from '~/redux/actions/producRedux';
+import todoReducer from '~/redux/actions/todoRedux';
 import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
