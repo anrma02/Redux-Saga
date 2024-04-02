@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, deleteTodo, fetchTodosRequest } from '~/redux/todoRedux';
-import { handleAddTodo, handleDeleteTodo, handleEditTodo, } from '~/todoHandle';
+import { handleAddTodo, handleDeleteTodo, handleEditTodo, } from '~/components/todo/todoHandle';
 import TodoItem from './TodoItem';
 
 

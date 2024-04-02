@@ -4,20 +4,19 @@
 import { Provider, } from 'react-redux'
 import store from './redux/store';
 import Counter from './components/Counter';
-import GetApi from './components/GetApi';
-import Todo from './components/Todo';
+import Product from './components/Product/Product';
+import Todo from './components/todo/Todo';
 
 function App() {
 
     return (
         < >
-
             <Provider store={store}>
                 <Counter />
                 <hr />
                 <Todo />
                 <hr />
-                <GetApi />
+                <Product />
             </Provider>
         </>
     );

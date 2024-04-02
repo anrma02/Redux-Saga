@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 
 // eslint-disable-next-line react/prop-types
-const ApiItem = ({ item }) => {
+const ProductItem = ({ item }) => {
      return (
           <div className="max-w-[250px] h-[450px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                <img className="rounded-t-lg bg-cover w-full p-4  h-[250px]" src={item.image} alt={item.title} />
@@ -15,7 +15,7 @@ const ApiItem = ({ item }) => {
      );
 };
 
-ApiItem.propTypes = {
+ProductItem.propTypes = {
      item: PropTypes.shape({
           title: PropTypes.string,
           image: PropTypes.string,
@@ -24,4 +24,4 @@ ApiItem.propTypes = {
 };
 
 
-export default ApiItem;
+export default ProductItem;

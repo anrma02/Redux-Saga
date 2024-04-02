@@ -2,10 +2,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchApi } from '~/redux/apiAction';
-import ApiItem from './ApiItem';
+import ProductItem from './ProductItem';
 
 
-const GetApi = () => {
+
+const Product = () => {
     const [show, setShow] = useState(false);
     const { data } = useSelector((state) => state.api);
     const dispatch = useDispatch();
@@ -21,11 +22,11 @@ const GetApi = () => {
             {show && <div className='grid grid-cols-5 gap-3 m-5 '>
 
                 {data.map((item) => (
-                    <ApiItem key={item.id} item={item} />
+                    <ProductItem key={item.id} item={item} />
                 ))}
             </div>}
         </>
     );
 };
 
-export default GetApi 
+export default Product
